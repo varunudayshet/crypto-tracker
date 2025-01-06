@@ -1,0 +1,144 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+header {
+  background: #161b22;
+  padding: 1rem 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  color: #58a6ff;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: #58a6ff;
+}
+
+.hero {
+  background: linear-gradient(to bottom, #161b22, #0d1117);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #c9d1d9;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  background-color: #58a6ff;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background-color: #1f6feb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #161b22;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.crypto-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+select,
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #c9d1d9;
+}
+
+button {
+  background-color: #58a6ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1f6feb;
+}
+
+canvas {
+  width: 100%;
+  max-height: 400px;
+  margin-top: 2rem;
+}
+
+footer {
+  background: #161b22;
+  text-align: center;
+  padding: 1rem 0;
+  color: #c9d1d9;
+  margin-top: 3rem;
+}
+
+.social-media a img {
+  height: 30px;
+  margin: 0 0.5rem;
+}
+
+.social-media a:hover img {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
