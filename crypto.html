@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Track cryptocurrency prices in real-time with a sleek, user-friendly portfolio tracker."
+    />
+    <title>Crypto Portfolio Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="crypto.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKaFDAPfw5pSH1NMS_a-i-n4dzpHyZ2wliuw&s"
+            alt="Crypto Tracker Logo"
+          />
+          <h1>Crypto Tracker</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        </div>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Track Your Cryptocurrency Portfolio</h2>
+        <p>
+          Real-time price tracking, predictions, and live updates for Bitcoin,
+          Ethereum, and Dogecoin.
+        </p>
+        <button class="cta-btn" onclick="updateDashboard()">Get Started</button>
+      </div>
+    </section>
+    <main>
+      <div class="container">
+        <!-- Crypto Selector -->
+        <div class="crypto-selector">
+          <label for="crypto">Select Cryptocurrency:</label>
+          <select id="crypto">
+            <option value="bitcoin">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="dogecoin">Dogecoin</option>
+          </select>
+          <button id="update">Update Prices</button>
+        </div>
+        <select id="timePeriod">
+          <option value="max">5 Years</option>
+          <option value="365">1 Year</option>
+          <option value="180">6 Months</option>
+          <option value="7">1 Week</option>
+          <option value="1">1 Day</option>
+        </select>
+        <div class="chart-container">
+          <canvas id="priceChart"></canvas>
+        </div>
+        <div class="prediction">
+          <h2>Price Prediction</h2>
+          <p id="prediction">Loading prediction...</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <p>&copy; 2024 Crypto Tracker. All Rights Reserved.</p>
+        <div class="social-media">
+          <a href="#"
+            ><img
+              src="data:image/png;base64,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"
+              alt="Twitter"
+          /></a>
+          <a href="#"
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AgP8AfP8Afv/B4P8Aev+11/+Hvv8Aef8Agv8/m//t9//y+f/X6/+s0v9MoP/d7/+93P/k8v93tv+Xx/85l/+dy/8IhP+n0P8tkf/q9f+Nwv9ws/9Upv9+uv9fqv8UiP8nj//J5P9qrv/S5/+/3/+52f9llt4QAAAGsklEQVR4nO2da5OiOhBAhRgVxAcKojiD4GP+/0+8PnZ2RytAp0knOLfPl62tsSgOkFcn6QwGDMMwDMMwDMMwDMMwDMMwDMMwDMMwDMMwDMMwDPO/Jbrh+iYImM7iTXFYpFWZBUGQlVUaHopNPJu6vjETRLNRsagyT9zxHvz5T1YtitHsrV9pHhdhKeRfs1fE9W9lWMS56xvFEY1O1dWgRu6HphTVafR+b/K4Lid+u94fSX9Sro+ub1mH6Tb0wHrfkl64fZeaZ5WktSWvUVKkycr1zQOIkp3m6/v5IndJ7wvkPAVULg2Ocjd3rdDIMJx08bs7TsKha41a8nXQ1e/uGKx72kDGqW/A74ZMY9cyCqLCyAt8IIKidzXOMpXG/G7IdOla6ZlRae4FPhDlyLXUT/aZacGrYrZ3rfWX6MO8393xoyeFMfo0WwT/IT97obgKqQSvimEPOqrL0FQrqMIPnVepK1LBm6LjtxgRC94UnZZFukrmH26rmw96wavihzvBPU07+Ipw1vSPMiuCnpc56sAtO/VFhZzckPd/ZHPgQ5RO2owIPxz0pV+Gp/Hm63iezc6XeVIc0lLI+viHSF3UNgWylhEyWyTH/OWWo/w82qe1irKwLxgHOEG/Gp/rXsi4/qsIrI/68/rn3cR18N7QR2kwFKnt2M0aVQhleG66aIOhJ9e21B4MUd+oXDdXGE2GXmA3yBhivlE5bqkRGw1FaEftwXyCEBSntss2GnoTi9HwaId4hYBBQrOh2NlrFBNEUyjKWet1mw09mVhwu5OjXuGm/cIthmJnazScIFoK0EC2xdDzLb3EKaaxn0CGB22GIrUzS7xFCIoUcuU2Q09sqeXuYNpCCSiFEEMrbeJR3+86hgXVEa2GnmdjxQamRyoWoEu3G/oWeqcRZmTf1FTks/PwEo/m8+38s/XSoqRv9UeYDltWN6SINqH3CGfcAHwdoDq5GyfMR7qrGdwdd7orb/zWzm1X8grzkdYUw7jUflyioh4Jx6hhk/rBLzFPS1CHM1DxJzlWXuuEuhZxTCrCDX2V/ckzKqAsiGdqZiXmrtQ9mj0u3goYhXVhhIqw+cru5AIXMhe07QUuDOyr4g8Rpp7xyAsi7rkrDZfIkDKwB4hkinvuSsMzcl5HVJSDxBluPk1pOMTOXGWUVU2MuyelYYyeuqJs8ze45640/MLOkAvQaBpJ0QtDysr00AvDA6Ehqs9muhySBmtwk4amDXeEhsi1CUrDC9qwpDTE3ZO6PUS3FoSGEXIBjWHDjG78FAG7ksJ/Qk5UY4vLRD7/DLyZKHBuKE7HyzOq2Mr05TeXYQJUDOg6pkBDXx20aGUObCEp3yGsHGIN90BDwnIIrEuxhh/Auqc0qfQCrD3EGgKH16TtIaxPgzUEDq9J+zSwfinSMAe2tqT9UtjYAml4BhZD0rEFbHyINIyBs1qk40PYGB9puIEaUo7xYXEapCE4FksZp4HF2pCGB2A5JI21weKlOEPopA9tvBTWKOMMoXOvtDFvWFnBGUKjzcTzFqC5J5whNAZOPPcEmj/EGULHTsTzh6DqAGcIHDtRzwGDCiLOELgPjnxvCWgtRhU+o0wCcV48A4zjka/FgNXp4hnlGvTLxH/6EVCQfD0Nak2Ur6r+cNFE+jVRqHVtBg0trGvDrE00Z2hjbSJmfak5QxvrSzFrhJXdENxXaiWrm/4kojFDS3uf9NfqmzO0s1Zff7+FKUNb+y3098yYMrS1Z2aw0t33ZMjQ3r4n7b1rhgzt7V3T3n9oxtDm/kPdPaRmDG3uIdVtE40Y2t0HrLmX24ih5b3cer1TE4a29+Pr5VQwYGg/p4JWXgwDhvbzYmgtau9u6CK3ySCCf6edDd3kp9HIMdTV0FGOIY08UV0NA2eJPqG5vjoausv1BY5TdzN0ma8NmnOvk6HjFJ+wvIldDB3nTQTmvuxg6Dz3JSx/Kd6wB/lLQTlo0Ya9yEELqW6whj3JIwzIBY007E0u6EFrPm+UoQj6k8970JaTHWPYs5zsLXn1EYa9y6vffDaCtmEfz0YY3M63qHuNuob9PN9i0HBGiZ5hf88oGdSeM6Nj2OtzZm7Md4pcuXDD3p8VNFCf9yS+FD9UGL7FeU8D1ZldMMN3ObPrxuu5awDDtzp37c7T2Xlthu93dt6dH+cfNhq+6/mHd77PsJQ1hm9+huWDxzmkqi7Kxf8F55B+M71aLC/bZD8uboz3yfayXH39jrNkn4mmeZ5Pf+WJwAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAwD4j9b0G+0pCMPuAAAAABJRU5ErkJggg=="
+              alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img
+              src="data:image/png;base64,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"
+              alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="crypto.js"></script>
+  </body>
+</html>
