@@ -69,12 +69,11 @@
           </select>
           <button id="update">Update Prices</button>
         </div>
-        <select id="timePeriod">
-          <option value="max">5 Years</option>
-          <option value="365">1 Year</option>
-          <option value="180">6 Months</option>
+        <select id="time-period">
           <option value="7">1 Week</option>
-          <option value="1">1 Day</option>
+          <option value="30">1 Month</option>
+          <option value="180">6 Months</option>
+          <option value="365">1 Year</option>
         </select>
         <div class="chart-container">
           <canvas id="priceChart"></canvas>
@@ -110,6 +109,6 @@
 
     <script src="script.js"></script>
     <script src="signout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>
-
